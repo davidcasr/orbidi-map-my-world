@@ -10,6 +10,16 @@ Base = declarative_base()
 
 
 def get_db():
+    """
+    Dependency generator function that provides a database session.
+
+    This function is designed to be used with FastAPI's dependency injection system.
+    It yields a database session and ensures that the session is properly closed
+    after the request is completed.
+
+    Yields:
+        SessionLocal: A SQLAlchemy database session.
+    """
     db = SessionLocal()
     try:
         yield db
