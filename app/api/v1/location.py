@@ -15,7 +15,16 @@ router = APIRouter()
 )
 def create_location(location: LocationCreate, db: Session = Depends(get_db)):
     new_location = LocationModel(
-        latitude=location.latitude, longitude=location.longitude
+        latitude=location.latitude,
+        longitude=location.longitude,
+        name=location.name,
+        formatted_address=location.formatted_address,
+        formatted_phone_number=location.formatted_phone_number,
+        rating=location.rating,
+        website=location.website,
+        serves_brunch=location.serves_brunch,
+        serves_dinner=location.serves_dinner,
+        serves_lunch=location.serves_lunch,
     )
     db.add(new_location)
     db.commit()
